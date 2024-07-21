@@ -1,5 +1,6 @@
 {
     "name": "housify-docs",
+    "type": "module",
     "author": "Gusarich",
     "license": "MIT",
     "scripts": {
