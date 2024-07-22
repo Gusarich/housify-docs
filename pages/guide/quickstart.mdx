@@ -1,3 +1,52 @@
+import { Cards } from 'nextra/components';
+
 # Quickstart
 
 This guide will help you get started with the Housify in a few minutes.
+
+## Install Housify
+
+To install the Housify compiler, you need to have [Node.js](https://nodejs.org/) installed on your machine. If you don't have Node.js installed, you can download it from the official website.
+
+After installing Node.js, you can install the Housify compiler using the following command:
+
+```bash
+npm install -g housify
+```
+
+## Create a source file
+
+Create a new file with the `.hsf` extension. This file will contain your Housify code. For example, you can create a file named `hello.hsf` with the following content:
+
+```ts
+house MyBeautifulHouse {
+    global counter: int = 0;
+
+    handle JOIN {
+        global.counter = global.counter + 1;
+    }
+}
+```
+
+## Compile the source file
+
+To compile the source file, run the following command in the terminal:
+
+```bash
+hsf hello.hsf
+```
+
+This command will compile the `hello.hsf` file and generate a `.json` file with the same name.
+
+That's it! You have successfully compiled your first Housify module. You will be able to deploy the generated `.json` file to your Hypixel Housing plot via **HousingKit** as soon as it is released.
+
+### Learn more about Housify
+
+<Cards>
+    <Cards.Card
+        arrow
+        title="Language Specifications"
+        href="/language/introduction"
+    />
+    <Cards.Card arrow title="Examples Overview" href="/examples/overview" />
+</Cards>
