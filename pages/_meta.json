@@ -7,16 +7,7 @@
             "typesetting": "article"
         }
     },
-    "guide": {
-        "type": "page",
-        "title": "Guide"
-    },
-    "language": {
-        "type": "page",
-        "title": "Language"
-    },
-    "examples": {
-        "type": "page",
-        "title": "Examples"
-    }
+    "guide": "Guide",
+    "language": "Language",
+    "examples": "Examples"
 }
