@@ -1,0 +1,6 @@
+{
+    "version": "0.2",
+    "language": "en",
+    "words": ["gusarich", "housify", "nextra", "hypixel"],
+    "ignorePaths": ["node_modules/**"]
+}
