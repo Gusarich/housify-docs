@@ -1,0 +1,21 @@
+# Event Handlers
+
+Event handlers are functions that respond to events triggered by players or the game. They are defined using the `handle` keyword followed by the event name and a block of code enclosed in curly braces. Event handlers must be placed after stat definitions. For example:
+
+```ts
+house MyHouse {
+    global counter: int = 0;
+
+    handle JOIN {
+        global.counter = global.counter + 1;
+    }
+
+    // More event handlers go here
+}
+```
+
+## Event Types
+
+Housify supports all the events available in the game, and for some of them, it provides additional data that can be accessed in the event handler, as well as the optional ability to cancel the event or execute event-specific actions (e.g., sending player to lobby).
+
+Read more about each of these events in the [Events](/language/housing/events) section.

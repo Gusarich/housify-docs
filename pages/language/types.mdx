@@ -1,0 +1,37 @@
+# Types
+
+Housify supports a variety of types that can be used to define variables and stats. This page provides an overview of the types available in the language and how they can be used.
+
+## Integers
+
+Integers are numbers that can be positive or negative. They are defined using the `int` keyword. For example:
+
+```ts
+let x: int = 42;
+```
+
+In this example, a variable named `x` of type `int` is defined with an initial value of `42`.
+
+## Booleans
+
+Booleans are values that can be either `true` or `false`. They are defined using the `bool` keyword. For example:
+
+```ts
+let flag: bool = true;
+```
+
+In this example, a variable named `flag` of type `bool` is defined with an initial value of `true`.
+
+## Structs
+
+Structs are not allowed to be defined by user at the moment (but will be in the future). They are currently used internaly to represent player and global stats. You can access struct fields using the `.` separator. For example:
+
+```ts
+let x: int = global.counter;
+```
+
+In this example, a variable named `x` of type `int` is defined with the value of the `counter` field of the `global` struct, which is a global stat `counter`.
+
+## Void
+
+Void is a special type that represents the absence of a value. It is not used at the moment, but will be in the future for functions that do not return a value.

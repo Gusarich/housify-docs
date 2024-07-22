@@ -1,0 +1,46 @@
+# Module Structure
+
+Housify module is a collection of houses, each of which defines a set of stats and event handlers. This section provides an overview of the structure of a Housify module.
+
+## House
+
+A house is a container for stats and event handlers. It is defined using the `house` keyword followed by the house name and a block of code enclosed in curly braces. For example:
+
+```ts
+house MyHouse {
+    // Stats and event handlers go here
+}
+```
+
+## Stats
+
+Read more about [Stats](/language/stats).
+
+Stats are variables that store data associated with a house. They can be global or player-specific. Global stats are shared across all players, while player stats are specific to each player. Stats are defined using the `global` or `player` keyword followed by the stat type and name. Stat definitions must be placed before event handlers. For example:
+
+```ts
+house MyHouse {
+    global counter: int = 0;
+    player score: int = 0;
+
+    // Event handlers go here
+}
+```
+
+## Event Handlers
+
+Read more about [Event Handlers](/language/handlers).
+
+Event handlers are functions that respond to events triggered by players or the game. They are defined using the `handle` keyword followed by the event name and a block of code enclosed in curly braces. Event handlers must be placed after stat definitions. For example:
+
+```ts
+house MyHouse {
+    global counter: int = 0;
+
+    handle JOIN {
+        global.counter = global.counter + 1;
+    }
+
+    // More event handlers go here
+}
+```

@@ -1,0 +1,25 @@
+# Variables
+
+Variables are used to store temporary data. They are defined using the `let` keyword followed by the variable name, a type annotation, and an initial value. For example:
+
+```ts
+let x: int = 42;
+let flag: bool = true;
+```
+
+In this example, a variable named `x` of type `int` is defined with an initial value of `42`, and a variable named `flag` of type `bool` is defined with an initial value of `true`.
+
+Read more about [Types](/language/types).
+
+## Variable Scope
+
+Variables have a scope that determines where they can be accessed. If you define a variable inside a block of code, it can only be accessed within that block. For example:
+
+```ts
+if (true) {
+    let x: int = 42;
+}
+// x is not accessible here
+// and you can define `x` here without any conflicts
+let x: bool = true;
+```
