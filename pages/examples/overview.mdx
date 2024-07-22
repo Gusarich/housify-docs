@@ -1,3 +1,33 @@
 # Overview
 
-This part of the documentation contains many examples of Housify modules. These examples are designed to help you understand how to use the Housify language and the Housify compiler. Each example includes a detailed description with code snippets and explanations.
+This part of the documentation contains examples of Housify modules. These examples are designed to help you understand how to use Housify. Each example includes a detailed description with code snippets and explanations.
+
+## Join Counter
+
+The Join Counter example demonstrates how to create a simple counter that increments every time a player joins the plot.
+
+```ts
+house Counter {
+    global counter: int = 0;
+
+    handle JOIN {
+        global.counter = global.counter + 1;
+    }
+}
+```
+
+This example defines a house named `ExampleHouse` with a global stat `counter` initialized to `0`. The `JOIN` event handler increments the `counter` stat by `1` every time a player joins the plot. You can then use the stat in other parts of code or even manually as `%stat.global/counter%` placeholder.
+
+## Simple Clicker Game
+
+The Simple Clicker Game example demonstrates how to create a simple clicker game where players can break blocks to increase their score.
+
+```ts
+house ClickerGame {
+    player score: int = 0;
+
+    handle BLOCK_BREAK {
+        player.score = player.score + 1;
+    }
+}
+```
