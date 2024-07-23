@@ -4,8 +4,8 @@ Stats are variables that store data associated with a house. They can be global 
 
 ```ts
 house MyHouse {
-    global counter: int = 0;
-    player score: int = 0;
+    global counter: int;
+    player score: int;
 }
 ```
 
@@ -17,29 +17,29 @@ After compilation these stats will have the same names for ease of use. You can 
 
 Global stats are shared across all players in the plot. They are useful for storing data that needs to be accessed by all players. For example, you can use global stats to keep track of some global state of the plot, such as the number of players who have visited the plot.
 
-Global stats are defined using the `global` keyword followed by the stat type and name. The initial value of a global stat can be set using the assignment operator `=`. For example:
+Global stats are defined using the `global` keyword followed by the stat type and name. The initial value of a global stat is `0` by rules of the Housing. For example:
 
 ```ts
 house MyHouse {
-    global counter: int = 0;
+    global counter: int;
 }
 ```
 
-In this example, a global stat named `counter` of type `int` is defined with an initial value of `0`.
+In this example, a global stat named `counter` of type `int` is defined.
 
 ## Player Stats
 
 Player stats are specific to each player in the plot. They are useful for storing data that needs to be accessed by individual players. For example, you can use player stats to keep track of a player's score, balance or any other player-specific data.
 
-Player stats are defined using the `player` keyword followed by the stat type and name. The initial value of a player stat can be set using the assignment operator `=`. For example:
+Player stats are defined using the `player` keyword followed by the stat type and name. The initial value of a player stat is `0` by rules of the Housing. For example:
 
 ```ts
 house MyHouse {
-    player score: int = 0;
+    player score: int;
 }
 ```
 
-In this example, a player stat named `score` of type `int` is defined with an initial value of `0`.
+In this example, a player stat named `score` of type `int` is defined.
 
 ## Stat Types
 
