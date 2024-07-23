@@ -8,7 +8,7 @@ The Join Counter example demonstrates how to create a simple counter that increm
 
 ```ts
 house Counter {
-    global counter: int = 0;
+    global counter: int;
 
     handle JOIN {
         global.counter = global.counter + 1;
@@ -16,7 +16,7 @@ house Counter {
 }
 ```
 
-This example defines a house named `ExampleHouse` with a global stat `counter` initialized to `0`. The `JOIN` event handler increments the `counter` stat by `1` every time a player joins the plot. You can then use the stat in other parts of code or even manually as `%stat.global/counter%` placeholder.
+This example defines a house named `ExampleHouse` with a global stat `counter`. The `JOIN` event handler increments the `counter` stat by `1` every time a player joins the plot. You can then use the stat in other parts of code or even manually as `%stat.global/counter%` placeholder.
 
 ## Simple Clicker Game
 
@@ -24,7 +24,7 @@ The Simple Clicker Game example demonstrates how to create a simple clicker game
 
 ```ts
 house ClickerGame {
-    player score: int = 0;
+    player score: int;
 
     handle BLOCK_BREAK {
         player.score = player.score + 1;

@@ -20,8 +20,8 @@ Stats are variables that store data associated with a house. They can be global 
 
 ```ts
 house MyHouse {
-    global counter: int = 0;
-    player score: int = 0;
+    global counter: int;
+    player score: int;
 
     // Event handlers go here
 }
@@ -35,7 +35,7 @@ Event handlers are functions that respond to events triggered by players or the 
 
 ```ts
 house MyHouse {
-    global counter: int = 0;
+    global counter: int;
 
     handle JOIN {
         global.counter = global.counter + 1;
