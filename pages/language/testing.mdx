@@ -1,0 +1,49 @@
+# Testing
+
+You can test your Housify modules using the **Emulator** which can be imported from the `housify` package in your TypeScript code. The Emulator provides a way to simulate the behavior of your modules without having to actually deploy them.
+
+We recommend using [Jest](https://jestjs.io/) for testing your Housify modules, but you can use any testing framework of your choice or even write your own test runner.
+
+## Example Usage with Jest
+
+```ts
+import { compile, EmulatedHouse, EventType } from 'housify';
+import fs from 'fs';
+
+describe('Counter', () => {
+    let house: EmulatedHouse;
+
+    beforeAll(() => {
+        // Compile the house script and initialize an emulated house
+        house = new EmulatedHouse(
+            compile(
+                fs.readFileSync('counter.hsf', 'utf-8').toString(),
+                false,
+            ).houses[0]!,
+        );
+    });
+
+    beforeEach(() => {
+        house.reset(); // Reset the house state before each test
+    });
+
+    it('should count players', () => {
+        house.emit(EventType.JOIN, 'player1'); // Emit an event
+        house.emit(EventType.JOIN, 'player2');
+        house.emit(EventType.JOIN, 'player3');
+        house.emit(EventType.JOIN, 'player1');
+        house.emit(EventType.JOIN, 'player2');
+        house.emit(EventType.JOIN, 'player3');
+
+        const actions = house.collect(); // Collect all emitted actions
+        expect(actions).toHaveLength(0);
+
+        expect(house.globalStat('counter')).toBe(6); // Check global stat
+
+        expect(house.playerStat('player1', 'counter')).toBe(2); // Check player stat
+        expect(house.playerStat('player2', 'counter')).toBe(2);
+        expect(house.playerStat('player3', 'counter')).toBe(2);
+        expect(house.playerStat('player4', 'counter')).toBe(0);
+    });
+});
+```
