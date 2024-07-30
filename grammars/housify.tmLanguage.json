@@ -1,0 +1,261 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Housify",
+    "scopeName": "source.hsf",
+    "foldingStartMarker": "\\{\\s*$",
+    "foldingStopMarker": "^\\s*\\}",
+    "patterns": [
+        {
+            "include": "#handler"
+        },
+        {
+            "include": "#house"
+        },
+        {
+            "include": "#const"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#comment"
+        },
+        {
+            "include": "#literal"
+        },
+        {
+            "include": "#punctuation"
+        },
+        {
+            "include": "#expression"
+        },
+        {
+            "include": "#simple-type"
+        },
+        {
+            "include": "#variable"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.housify",
+                    "match": "\\b(if|else)\\b"
+                },
+                {
+                    "comment": "Control flow keywords",
+                    "match": "\\b(if|else)\\b",
+                    "name": "keyword.control.housify"
+                },
+                {
+                    "match": "\\b(let)\\b",
+                    "name": "keyword.other.housify"
+                },
+                {
+                    "match": "\\b(handle)\\b",
+                    "name": "keyword.other.function.housify"
+                },
+                {
+                    "match": "\\b(house)\\b",
+                    "name": "keyword.other.struct.housify"
+                },
+                {
+                    "comment": "Stats modifiers",
+                    "match": "\\b(global|player)\\b(?!\\.)",
+                    "captures": {
+                        "0": {
+                            "name": "storage.modifier.housify"
+                        }
+                    }
+                },
+                {
+                    "comment": "Variable modifiers",
+                    "match": "\\b(const)\\b",
+                    "name": "storage.modifier.housify"
+                }
+            ]
+        },
+        "comment": {
+            "patterns": [
+                {
+                    "name": "comment.line.double-slash.housify",
+                    "begin": "//",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.line.double-slash.housify"
+                        }
+                    },
+                    "end": "$"
+                },
+                {
+                    "name": "comment.block.housify",
+                    "begin": "\\s*/\\*",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "comment.block.begin.housify punctuation.definition.comment.begin.housify"
+                        }
+                    },
+                    "end": "\\*/",
+                    "endCaptures": {
+                        "0": {
+                            "name": "comment.block.end.housify punctuation.definition.comment.end.housify"
+                        }
+                    }
+                }
+            ]
+        },
+        "literal": {
+            "patterns": [
+                {
+                    "comment": "Decimal integer WITH leading zero",
+                    "match": "\\b(0[0-9]*)\\b",
+                    "name": "constant.numeric.decimal.housify"
+                },
+                {
+                    "comment": "Decimal integer WITHOUT leading zero",
+                    "match": "\\b([1-9](?:_?[0-9])*)\\b",
+                    "name": "constant.numeric.decimal.housify"
+                },
+                {
+                    "comment": "Boolean literal",
+                    "match": "\\b(true|false)\\b",
+                    "name": "constant.language.bool.housify"
+                },
+                {
+                    "comment": "Event",
+                    "match": "\\b(JOIN|QUIT|DEATH|KILL|RESPAWN|GROUP_CHANGE|PVP_STATE_CHANGE|FISH_CAUGHT|PORTAL_USE|DAMAGE|BLOCK_BREAK|PARKOUR_START|PARKOUR_FINISH|DROP_ITEM|PICKUP_ITEM|CHANGE_HELD_ITEM|TOGGLE_SNEAK|TOGGLE_FLIGHT)\\b",
+                    "name": "constant.language.other.housify entity.name.function.housify"
+                }
+            ]
+        },
+        "expression": {
+            "patterns": [
+                {
+                    "comment": "Logical operators",
+                    "match": "(\\|\\||&&)",
+                    "name": "keyword.operator.logical.housify"
+                },
+                {
+                    "comment": "Arithmetic operators",
+                    "match": "([+*\\-])|(/(?!/))",
+                    "name": "keyword.operator.arithmetic.housify"
+                },
+                {
+                    "comment": "Assignment operator",
+                    "match": "(?<![<>])=(?!=)",
+                    "name": "keyword.operator.assignment.equal.housify"
+                },
+                {
+                    "comment": "Comparison operators",
+                    "match": "([!=]=|<=?|>=?)",
+                    "name": "keyword.operator.comparison.housify"
+                }
+            ]
+        },
+        "punctuation": {
+            "patterns": [
+                {
+                    "match": ",",
+                    "name": "punctuation.comma.housify"
+                },
+                {
+                    "match": "[{}]",
+                    "name": "punctuation.brackets.curly.housify"
+                },
+                {
+                    "match": "[()]",
+                    "name": "punctuation.brackets.round.housify"
+                },
+                {
+                    "match": ";",
+                    "name": "punctuation.semi.housify"
+                },
+                {
+                    "match": ":",
+                    "name": "punctuation.colon.housify"
+                },
+                {
+                    "match": "\\.",
+                    "name": "punctuation.dot.housify"
+                }
+            ]
+        },
+        "simple-type": {
+            "comment": "Simple types",
+            "match": "\\b(int|bool)\\b",
+            "name": "entity.name.type.housify"
+        },
+        "const": {
+            "patterns": [
+                {
+                    "comment": "Any valid Housify identifier with const modifier",
+                    "match": "\\b(const)\\s+\\b([a-zA-Z][a-zA-Z0-9]*)\\b",
+                    "captures": {
+                        "1": {
+                            "name": "storage.modifier.housify"
+                        },
+                        "2": {
+                            "name": "variable.other.constant.housify"
+                        }
+                    }
+                }
+            ]
+        },
+        "variable": {
+            "patterns": [
+                {
+                    "comment": "Reserved language variables",
+                    "match": "\\b(global|player)\\b(?=\\.)",
+                    "captures": {
+                        "0": {
+                            "name": "variable.language.housify"
+                        },
+                        "1": {
+                            "name": "punctuation.dot.housify"
+                        }
+                    }
+                },
+                {
+                    "comment": "Any valid Housify identifier without const modifier",
+                    "match": "(?<!\\bconst\\s+)\\b([a-zA-Z][a-zA-Z0-9]*)\\b",
+                    "captures": {
+                        "0": {
+                            "name": "variable.other.housify"
+                        }
+                    }
+                }
+            ]
+        },
+        "handler": {
+            "comment": "Handler declaration",
+            "match": "\\b(handle)\\s*((?:[a-zA-Z][a-zA-Z0-9]*))\\s*({)",
+            "captures": {
+                "0": {
+                    "name": "keyword.other.function.housify"
+                },
+                "2": {
+                    "name": "entity.name.function.housify"
+                },
+                "3": {
+                    "name": "punctuation.brackets.curly.housify"
+                }
+            }
+        },
+        "house": {
+            "comment": "House declaration",
+            "match": "\\b(house)\\s*((?:[a-zA-Z][a-zA-Z0-9]*))\\s*({)",
+            "captures": {
+                "0": {
+                    "name": "keyword.other.struct.housify"
+                },
+                "2": {
+                    "name": "entity.name.type.housify"
+                },
+                "3": {
+                    "name": "punctuation.brackets.curly.housify"
+                }
+            }
+        }
+    }
+}
