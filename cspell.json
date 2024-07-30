@@ -1,6 +1,14 @@
 {
     "version": "0.2",
     "language": "en",
-    "words": ["gusarich", "housify", "nextra", "hypixel", "respawns"],
+    "words": [
+        "gusarich",
+        "housify",
+        "nextra",
+        "hypixel",
+        "respawns",
+        "shiki",
+        "rehype"
+    ],
     "ignorePaths": ["node_modules/**", ".next/**", "out/**"]
 }
